@@ -32,10 +32,14 @@ public class DBConnection {
 
 
 		try {
+//			DriverManager.registerDriver(new org.postgresql.Driver());
+//
+//			Connection dbConnection = DriverManager.getConnection(
+//					DB_CONNECTION, DB_USER,DB_PASSWORD);
+//			return dbConnection;
 			DriverManager.registerDriver(new org.postgresql.Driver());
-
-			Connection dbConnection = DriverManager.getConnection(
-					DB_CONNECTION, DB_USER,DB_PASSWORD);
+			String dbUrl = System.getenv("JDBC_DATABASE_URL");
+			Connection dbConnection = DriverManager.getConnection(dbUrl);
 			return dbConnection;
 
 		} catch (SQLException e) {
